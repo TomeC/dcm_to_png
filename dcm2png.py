@@ -72,10 +72,6 @@ def getImgUrl(responseId):
 		print('retry getImgUrl ...')
 		time.sleep(3)
 
-# getImgUrl('f0a53c4c-bc18-4904-a849-22b292a831d2')
-# text = '{"OperationId":"f0a53c4c-bc18-4904-a849-22b292a831d2","Progress":100,"State":"Completed","Payload":{"NumPages":1,"Pages":[{"ImageName":"1.3.12.2.1107.5.1.4.66125.30000022111200052599300075080.dcm","ImageSize":"512 x 512","ImagePath":"dc046e0f-2a0a-458a-8018-nTusphzl5597/1.3.12.2.1107.5.1.4.66125.30000022111200052599300075080.dcm.png","SharedURL":"https://s3.us-west-2.amazonaws.com/imaging-aspose-app/dc046e0f-2a0a-458a-8018-nTusphzl5597/1.3.12.2.1107.5.1.4.66125.30000022111200052599300075080.dcm.png?X-Amz-Expires=86400&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4XIV7DNDI7ZGBF7X/20221115/us-west-2/s3/aws4_request&X-Amz-Date=20221115T063250Z&X-Amz-SignedHeaders=host&X-Amz-Signature=81c258e0046e881561d786aac8e8001a06d75425d2baa4f6cd8fce13d41778b9"}]}}'
-# print(json.loads(text)['Payload']['Pages'][0]['SharedURL'])
-# os._exit(0)
 def dowloadImg(imgUrl, filePath, fileName):
 	response = requests.get(imgUrl, stream = True)
 	with open(filePath+'/output/'+fileName+'.png', 'wb') as file:
@@ -109,4 +105,3 @@ for dirpath,dirnames,filenames in os.walk(baseFilePath):
 		print('dowloadImg ...')
 		dowloadImg(imgUrl, baseFilePath, file)
 		time.sleep(3)
-		os.exit(0)
